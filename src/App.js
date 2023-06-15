@@ -1,23 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import Navbar from "./components/navbar/navbar";
+
+let user = {
+  name: "venky",
+  image:
+    "https://media.licdn.com/dms/image/D5603AQH-2TgV68lhIw/profile-displayphoto-shrink_800_800/0/1644667098402?e=2147483647&v=beta&t=fevDVy4V9R0Gi8RzNtquXPHHOvJR0-yHT4taREMt0HU",
+  imageSize: 100,
+  radius: 50,
+};
+const ShopList = () => {
+  const products = [
+    { title: "apple", fruit: true, id: 1 },
+    { title: "mango", fruit: true, id: 2 },
+    { title: "chocolate", fruit: false, id: 1 },
+  ];
+  const listItems = products.map((product) => (
+    <li
+      key={products.id}
+      style={{
+        color: product.fruit ? 'red' : 'green',
+      }}
+    >
+      {product.title}
+    </li>
+  ));
+  return <ul>{listItems}</ul>;
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div classNameName="blank">
+      <Navbar></Navbar>
+      <img
+        src={user.image}
+        alt={"photo of" + user.name}
+        style={{
+          width: user.imageSize,
+          height: user.imageSize,
+          borderRadius: user.radius,
+        }}
+      />
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum labore
+        optio ad suscipit molestias consequatur soluta tenetur veniam,
+        necessitatibus ipsum animi, deserunt deleniti non quo maiores laborum
+        minus architecto sed.
+      </p>
+      <ShopList />
     </div>
   );
 }
