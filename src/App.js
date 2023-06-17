@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import Navbar from "./components/navbar";
+// import About from "./components/About";  
 import TextForm from "./components/textform";
 
 // let user = {
@@ -31,10 +32,11 @@ import TextForm from "./components/textform";
 
 function App() {
   return (
-    <div classNameName="blank">
-      <Navbar  title = "VENKY" home="HOME"></Navbar>
-      <TextForm />
-      {/* <img
+    <>
+      <div className="blank">
+        <Navbar title="VENKY" home="HOME"></Navbar>
+        <TextForm />
+        {/* <img
         src={user.image}
         alt={"photo of" + user.name}
         style={{
@@ -42,15 +44,19 @@ function App() {
           height: user.imageSize,
           borderRadius: user.radius,
         }}
-      />
-      <p>
+        />
+        <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum labore
         optio ad suscipit molestias consequatur soluta tenetur veniam,
         necessitatibus ipsum animi, deserunt deleniti non quo maiores laborum
         minus architecto sed.
-      </p>
+        </p>
       <ShopList /> */}
-    </div>
+        <div className="container">
+          {/* <About /> */}
+        </div>
+      </div>
+    </>
   );
 }
 
