@@ -1,62 +1,66 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./components/navbar";
-// import About from "./components/About";  
+// import About from "./components/About";
 import TextForm from "./components/textform";
 
-// let user = {
-//   name: "venky",
-//   image:
-//     "https://media.licdn.com/dms/image/D5603AQH-2TgV68lhIw/profile-displayphoto-shrink_800_800/0/1644667098402?e=2147483647&v=beta&t=fevDVy4V9R0Gi8RzNtquXPHHOvJR0-yHT4taREMt0HU",
-//   imageSize: 100,
-//   radius: 50,
-// };
-// const ShopList = () => {
-//   const products = [
-//     { title: "apple", fruit: true, id: 1 },
-//     { title: "mango", fruit: true, id: 2 },
-//     { title: "chocolate", fruit: false, id: 1 },
-//   ];
-//   const listItems = products.map((product) => (
-//     <li
-//       key={products.id}
-//       style={{
-//         color: product.fruit ? 'red' : 'green',
-//       }}
-//     >
-//       {product.title}
-//     </li>
-//   ));
-//   return <ul>{listItems}</ul>;
-// };
-
 function App() {
+  const toggleMode = () => {
+    if (modex === "light") {
+      setMode("dark");
+      setText({
+        text1: "Enable Light Mode",
+        textColor: "light",
+      });
+      setStyles({
+        color: "white",
+        backgroundColor: "#213555",
+      });
+    } else {
+      setMode("light");
+      setText({
+        text1: "Enable Dark Mode",
+        textColor: "dark",
+      });
+
+      setStyles({
+        color: "black",
+        backgroundColor: "white",
+      });
+    }
+  };
+  const [modex, setMode] = useState("light");
+  const [text1, setText] = useState({
+    text1: "Enable Dark Mode",
+    textColor: "dark",
+  });
+  const [makeStyles, setStyles] = useState({
+    color: "black",
+    backgroundColor: "white",
+  });
+  const styles1 = {
+    backgroundColor: "white",
+  };
+  const styles2={
+    backgroundColor :"grey",
+    color :'white'
+  
+  }
   return (
-    <>
+    <div className="App" style={makeStyles}>
       <div className="blank">
-        <Navbar title="VENKY" home="HOME"></Navbar>
-        <TextForm />
-        {/* <img
-        src={user.image}
-        alt={"photo of" + user.name}
-        style={{
-          width: user.imageSize,
-          height: user.imageSize,
-          borderRadius: user.radius,
-        }}
-        />
-        <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum labore
-        optio ad suscipit molestias consequatur soluta tenetur veniam,
-        necessitatibus ipsum animi, deserunt deleniti non quo maiores laborum
-        minus architecto sed.
-        </p>
-      <ShopList /> */}
-        <div className="container">
-          {/* <About /> */}
-        </div>
+        <Navbar
+          title="VENKY"
+          home="HOME"
+          mode={modex}
+          color={modex}
+          fun={toggleMode}
+          text={text1.text1}
+          colors={text1.textColor}
+        ></Navbar>
+        <TextForm makeStyles={makeStyles} styles={modex==='light'?styles1:styles2} />
       </div>
-    </>
+    </div>
   );
 }
 

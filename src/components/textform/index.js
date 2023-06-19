@@ -1,30 +1,10 @@
 import React, { useState } from "react";
 
-export default function TextForm() {
-  const [btnName, setName] = useState("Enable Dark Mode");
-  const toggleMode = () => {
-    if (makeStyles.color === "black") {
-      setStyles({
-        color: "white",
-        backgroundColor: "black",
-        border: "2px solid white",
-        
-      });
+export default function TextForm(props) {
+  // /const [btnName, setName] = useState("Enable Dark Mode");
+  
 
-      setName("Enable Light Mode");
-    } else {
-      setStyles({
-        color: "black",
-        backgroundColor: "white",
-      });
-      setName("Enable Dark Mode");
-    }
-  };
-
-  const [makeStyles, setStyles] = useState({
-    color: "black",
-    backgroundColor: "white",
-  });
+  
   const handleUpClick = () => {
     // console.log("uppercase clicked")
     let newText = text.toUpperCase();
@@ -50,15 +30,15 @@ export default function TextForm() {
   };
   return (
     <>
-      <div className="container mb-3 my-3" style={makeStyles}>
+      <div className="container mb-3 my-3" style={props.makeStyles}>
         <h1>Enter you Text for Upper case</h1>
-        <div className="container" style={{ border : '2px solid black ' , borderRadius : '15px'}}>
+        <div className="container" style={{  borderRadius : '15px'}}>
           <textarea
             className="form-control "
             value={text}
             onChange={handelOnChange}
             id="myBox"
-            style={makeStyles}
+            style={props.styles}
             rows="8"
           ></textarea>
           </div>
@@ -79,9 +59,6 @@ export default function TextForm() {
           >
             Speak
           </button>
-          <button className="btn btn-primary mt-3 mx-3" onClick={toggleMode}>
-          {btnName}
-        </button>
         </div>
         <div className="container my-2">
           <h2>Your Text Summary</h2>
