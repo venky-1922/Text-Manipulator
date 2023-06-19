@@ -7,13 +7,16 @@ export default function TextForm(props) {
   
   const handleUpClick = () => {
     // console.log("uppercase clicked")
+    
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("changed to Uppercase",'success');
   };
   const handleLoClick = () => {
     // console.log("lowercase clicked")
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Changed to Lowercase",'success');
   };
   const handelOnChange = (event) => {
     console.log("text changed");
@@ -21,12 +24,14 @@ export default function TextForm(props) {
   };
   const removeText = () => {
     setText("");
+    props.showAlert("Cleared text",'success');
   };
   const [text, setText] = useState("kjekefjk");
   const speak = () => {
     let msg = new SpeechSynthesisUtterance();
     msg.text = text;
     window.speechSynthesis.speak(msg);
+    props.showAlert("Speaking",'success');
   };
   return (
     <>
@@ -69,7 +74,7 @@ export default function TextForm(props) {
           </p>
           <p>
             {" "}
-            {0.008 * (text ? text.split(" ").length : 0)} minutes required to
+            {0.008 * (text ? text.trim().split(/\s+/).length : 0)} minutes required to
             read
           </p>
           <h3>PREVIEW</h3>

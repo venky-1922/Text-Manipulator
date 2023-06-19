@@ -3,8 +3,19 @@ import React, { useState } from "react";
 import Navbar from "./components/navbar";
 // import About from "./components/About";
 import TextForm from "./components/textform";
+import Alert from "./components/Alert";
 
 function App() {
+  const showAlert = (message , type) =>{
+    setAlert({
+      msg : message ,
+      type : type
+    })
+    setTimeout(() => {
+      setAlert(null);
+      
+    }, 1000);
+  }
   const toggleMode = () => {
     if (modex === "light") {
       setMode("dark");
@@ -16,6 +27,7 @@ function App() {
         color: "white",
         backgroundColor: "#213555",
       });
+      showAlert('Dark Mode Enabled','success');
     } else {
       setMode("light");
       setText({
@@ -27,6 +39,7 @@ function App() {
         color: "black",
         backgroundColor: "white",
       });
+      showAlert("Light Mode Enabled",'success');
     }
   };
   const [modex, setMode] = useState("light");
@@ -44,8 +57,8 @@ function App() {
   const styles2={
     backgroundColor :"grey",
     color :'white'
-  
   }
+  const [alert, setAlert] = useState(null);
   return (
     <div className="App" style={makeStyles}>
       <div className="blank">
@@ -58,9 +71,10 @@ function App() {
           text={text1.text1}
           colors={text1.textColor}
         ></Navbar>
-        <TextForm makeStyles={makeStyles} styles={modex==='light'?styles1:styles2} />
+        <Alert alert={alert}/>
+        <TextForm showAlert={showAlert} makeStyles={makeStyles} styles={modex==='light'?styles1:styles2} />
       </div>
-    </div>
+    </div> 
   );
 }
 
