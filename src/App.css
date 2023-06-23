@@ -20,3 +20,7 @@ h1{
   outline: none;
   box-shadow: none;
 }
+.title:hover {
+color : orange;
+font-weight: bolder;
+}

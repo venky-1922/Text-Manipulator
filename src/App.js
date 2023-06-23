@@ -1,10 +1,14 @@
-import "./App.css";
 import React, { useState } from "react";
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+// } from "react-router-dom";
+import "./App.css";
 import Navbar from "./components/navbar";
-// import About from "./components/About";
 import TextForm from "./components/textform";
 import Alert from "./components/Alert";
-// import './components/navbar/index.css';
+// import About from "./components/About";
 
 function App() {
   const colorMode =(value) =>{
@@ -13,6 +17,16 @@ function App() {
       color: "white",
       backgroundColor: value,
     });
+    setAlert({
+      msg : "Background Color Changed",
+      type : 'success'
+    })
+    setTimeout(() => {
+      setAlert(null);
+      
+    }, 1000);
+    
+    
   }
   const showAlert = (message , type) =>{
     setAlert({
@@ -24,12 +38,9 @@ function App() {
       
     }, 1000);
   }
-  // let color1=true;
-  // if(modex==='dark')
-  // color1=false;
   const toggleMode = () => {
     if (modex === "light") {
-      // color1=true;
+      document.title='Text-Manipulator Dark-Mode';
       setMode("dark");
       setText({
         text1: "Enable Light Mode",
@@ -42,7 +53,7 @@ function App() {
       showAlert('Dark Mode Enabled','success');
     } 
     else {
-      //  color1 =false;
+      document.title='Text-Manipulator Light-Mode';
       setMode("light");
       setText({
         text1: "Enable Dark Mode",
@@ -74,10 +85,11 @@ function App() {
   }
   const [alert, setAlert] = useState(null);
   return (
+    // <Router>
     <div className="App" style={makeStyles}>
       <div className="blank">
         <Navbar
-          title="VENKY"
+          title="TEXT-MANIPULATOR"
           home="HOME"
           mode={modex}
           color={modex}
@@ -85,13 +97,20 @@ function App() {
           text={text1.text1}
           colors={text1.textColor}
           colorMode={colorMode}
+          about='About'
           backgroundColor={modex==='dark'?false:true}
-          // selectedColor={selectedColor}
         ></Navbar>
         <Alert alert={alert}/>
-        <TextForm showAlert={showAlert} makeStyles={makeStyles} styles={modex==='light'?styles1:styles2} />
+        {/* <Routes>
+          <Route exact path="/about" element={<About />}>
+          </Route>
+          <Route exact path="/" element={<TextForm showAlert={showAlert} makeStyles={makeStyles} styles={modex==='light'?styles1:styles2} /> }>
+          </Route>
+          </Routes> */}
+          <TextForm showAlert={showAlert} makeStyles={makeStyles} styles={modex==='light'?styles1:styles2} /> 
       </div>
     </div> 
+    // </Router>
   );
 }
 

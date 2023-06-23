@@ -1,4 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
+// import {Link} from 'react-router-dom'
 import PropTypes from "prop-types";
 import "./index.css";
 
@@ -25,12 +27,7 @@ const Navbar = (props) => {
     right: "25px",
     display: "none",
   });
-  const [styles1, setStyles1] = useState({
-    width: "fit-content",
-    height: "fit-content",
-    position: "absolute",
-    left: "1140px",
-  });
+  const [styles1, setStyles1] = useState({});
 
   const colorMode = (value) => {
     // console.log(value + " clicked");
@@ -43,10 +40,12 @@ const Navbar = (props) => {
   };
 
   return (
-    <nav className={`navbar navbar-expand-lg navbar-${props.color} bg-${props.mode}`}>
+    <nav className={`navbar navbar-expand-lg navbar-${props.color} bg-${props.mode} nav-shadow`}>
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <a className="navbar-brand title"  href="#">
+          <span style={{hover: 'orange'}}>
           {props.title}
+            </span>
         </a>
         <button
           className="navbar-toggler"
@@ -62,10 +61,15 @@ const Navbar = (props) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
+              <a className="nav-link active" aria-current="page" href='#'>
                 {props.home}
               </a>
             </li>
+            <li>
+              <a className="nav-link active" aria-current="page" href="#">
+                {props.about}
+              </a>
+              </li>
           </ul>
           <button className="btn btn-primary choose_color" onClick={chooseMode} style={styles1}>
             Choose backgroundColor
