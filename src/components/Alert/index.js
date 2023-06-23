@@ -7,7 +7,7 @@ function Alert(props) {
     }
   return (
     <div>
-    { props.alert && <div class={`alert alert-${props.alert.type}`} role="alert">
+    { props.alert && <div className={`alert alert-${props.alert.type}`} role="alert">
               <strong>{cap(props.alert.type)}</strong> : {props.alert.msg}
 </div>}
     </div>

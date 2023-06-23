@@ -4,8 +4,16 @@ import Navbar from "./components/navbar";
 // import About from "./components/About";
 import TextForm from "./components/textform";
 import Alert from "./components/Alert";
+// import './components/navbar/index.css';
 
 function App() {
+  const colorMode =(value) =>{
+    console.log(value+"clicked");
+    setStyles({
+      color: "white",
+      backgroundColor: value,
+    });
+  }
   const showAlert = (message , type) =>{
     setAlert({
       msg : message ,
@@ -16,8 +24,12 @@ function App() {
       
     }, 1000);
   }
+  // let color1=true;
+  // if(modex==='dark')
+  // color1=false;
   const toggleMode = () => {
     if (modex === "light") {
+      // color1=true;
       setMode("dark");
       setText({
         text1: "Enable Light Mode",
@@ -28,7 +40,9 @@ function App() {
         backgroundColor: "#213555",
       });
       showAlert('Dark Mode Enabled','success');
-    } else {
+    } 
+    else {
+      //  color1 =false;
       setMode("light");
       setText({
         text1: "Enable Dark Mode",
@@ -70,6 +84,9 @@ function App() {
           fun={toggleMode}
           text={text1.text1}
           colors={text1.textColor}
+          colorMode={colorMode}
+          backgroundColor={modex==='dark'?false:true}
+          // selectedColor={selectedColor}
         ></Navbar>
         <Alert alert={alert}/>
         <TextForm showAlert={showAlert} makeStyles={makeStyles} styles={modex==='light'?styles1:styles2} />
