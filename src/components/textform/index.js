@@ -26,7 +26,7 @@ export default function TextForm(props) {
     setText("");
     props.showAlert("Cleared text",'success');
   };
-  const [text, setText] = useState("kjekefjk");
+  const [text, setText] = useState("");
   const speak = () => {
     let msg = new SpeechSynthesisUtterance();
     msg.text = text;
